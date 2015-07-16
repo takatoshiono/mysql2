@@ -708,8 +708,8 @@ describe Mysql2::Client do
 
       it 'should return a internal encoding string if Encoding.default_internal is set' do
         with_internal_encoding Encoding::UTF_8 do
-          expect(client.escape("\u{30C6}\u{30B9}\u{30C8}")).to eq "\u{30C6}\u{30B9}\u{30C8}"
-          expect(client.escape("\u{30C6}'\u{30B9}\"\u{30C8}")).to eq "\u{30C6}\\'\u{30B9}\\\"\u{30C8}"
+          client.escape("\u{30C6}\u{30B9}\u{30C8}").should eql "\u{30C6}\u{30B9}\u{30C8}"
+          client.escape("\u{30C6}'\u{30B9}\"\u{30C8}").should eql "\u{30C6}\\'\u{30B9}\\\"\u{30C8}"
         end
       end
     end
